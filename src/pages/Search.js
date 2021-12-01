@@ -2,9 +2,9 @@
 import { SearchIcon, AdjustmentsIcon } from '@heroicons/react/solid';
 import { useLocation } from 'react-router';
 import Header from "../components/Header";
-import Map from "../components/Map";
 import SmallCard from './../components/SmallCard';
 import { searchResult } from './../consts/searchResult';
+import MyMap from '../components/MyMap'
 
 
 function Search() {
@@ -24,7 +24,7 @@ function Search() {
         <div className=''>
             <Header stickyHeader={false}  />
                 <section className=' w-full h-[500px]'>
-                    <Map searchResult={searchResult} />
+                    <MyMap searchResult={searchResult} />
                 </section>
 
 
