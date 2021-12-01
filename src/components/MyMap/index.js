@@ -9,6 +9,7 @@ import {Card, Box, Backdrop, Button, Autocomplete, TextField} from '@mui/materia
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import PropPriceFilter from "../PropPriceFilter";
+import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 import '../../../node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 const MyMap = React.forwardRef((props, ref) => {
@@ -36,7 +37,7 @@ const MyMap = React.forwardRef((props, ref) => {
   const minPriceDistance = 0.1*(maxPriceRange-minPriceRange);
   var [suburbs, setSuburbs] = useState([{"label":"Suburb 1"}, {"label":"Suburb 2"}]);
   var [myStateMap, setMyStateMap] = useState(null);
-  var [openEditFilters, setOpenEditFilters] = useState(null);
+  var [openEditFilters, setOpenEditFilters] = useState(false);
   var [viewport, setViewport] = useState(null);
   const [priceRange, setPriceRange] = useState([minPriceRange, maxPriceRange-10]);
   const [suburbValue, setSuburbValue] = useState(null);
@@ -225,14 +226,14 @@ const MyMap = React.forwardRef((props, ref) => {
 
   const clearFilters = (event)=>{
     filtersMap = {};
-    // setPriceRange([minPriceRange, maxPriceRange - 10]);
-    // setSuburbValue('');
+    setPriceRange([minPriceRange, maxPriceRange - 10]);
+    setSuburbValue([]);
     filterMapData();
   };
 
   const filterMapData = ()=>{
-    console.log(filtersMap);
-    console.log(window.mapdata);
+    // console.log(filtersMap);
+    // console.log(window.mapdata);
     sliderTimer = null;
     var copiedData = JSON.parse(JSON.stringify(window.mapdata));
     // var copiedData = clone(data);
